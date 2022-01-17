@@ -1,0 +1,32 @@
+-- ************************************** `jobs`
+
+CREATE TABLE `jobs`
+(
+ `job_id`         int NOT NULL AUTO_INCREMENT ,
+ `description`    mediumtext NULL ,
+ `post_date`      date NULL ,
+ `deadline_date`  date NULL ,
+ `experience`     tinytext NULL ,
+ `tasks`          json NULL ,
+ `qualifications` json NULL ,
+ `location`       tinytext NULL ,
+ `statement`      mediumtext NULL ,
+ `job_name`       varchar(255) NOT NULL ,
+
+PRIMARY KEY (`job_id`)
+);
+-- ************************************** `job_application`
+
+CREATE TABLE `job_application`
+(
+ `job_application_id`   int NOT NULL AUTO_INCREMENT ,
+ `job_id`               int NOT NULL ,
+ `applicant_fname`      varchar(255) NOT NULL ,
+ `applicant_lname`      varchar(255) NOT NULL ,
+ `applicant_linkedin`   varchar(255) NOT NULL ,
+ `applicant_motivation` longtext NOT NULL ,
+
+PRIMARY KEY (`job_application_id`),
+KEY `FK_139` (`job_id`),
+CONSTRAINT `job_id` FOREIGN KEY `FK_139` (`job_id`) REFERENCES `jobs` (`job_id`)
+);
